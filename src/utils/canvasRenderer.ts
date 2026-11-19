@@ -14,6 +14,8 @@ export class CanvasRenderer {
   private nh = 0;
   private nx = 0;
   private ny = 0;
+  private scale = 1;
+  private isMobilePortrait = false;
 
   constructor(canvas: HTMLCanvasElement) {
     this.canvas = canvas;
@@ -37,6 +39,7 @@ export class CanvasRenderer {
     const rawH = height > 0 ? height : (this.canvas.clientHeight || (typeof window !== 'undefined' ? window.innerHeight : 720));
     
     const isMobile = rawW < 768;
+    this.isMobilePortrait = isMobile && rawH > rawW;
     const maxDpr = isMobile ? 1.5 : 2.0;
     const cappedDpr = Math.min(maxDpr, Math.max(1, dpr));
     
@@ -54,9 +57,9 @@ export class CanvasRenderer {
     // Precalculate cover geometry
     const iw = FRAME_WIDTH;
     const ih = FRAME_HEIGHT;
-    const scale = Math.max(this.cw / iw, this.ch / ih);
-    this.nw = iw * scale;
-    this.nh = ih * scale;
+    this.scale = Math.max(this.cw / iw, this.ch / ih);
+    this.nw = iw * this.scale;
+    this.nh = ih * this.scale;
     this.nx = (this.cw - this.nw) / 2;
     this.ny = (this.ch - this.nh) / 2;
 
@@ -97,8 +100,42 @@ export class CanvasRenderer {
       this.ctx.fillRect(0, 0, this.cw, this.ch);
     }
 
-    // Direct draw with precalculated coordinates
-    this.ctx.drawImage(asset, this.nx, this.ny, this.nw, this.nh);
+    let dx = this.nx;
+    let dy = this.ny;
+    let dw = this.nw;
+    let dh = this.nh;
+
+    // Mobile Portrait ONLY: In the final scene (Chapter 13 tea cup presentation),
+    // center the finished porcelain tea cup and saucer so it's fully, beautifully visible.
+    if (this.isMobilePortrait && frameIndex >= 1460) {
+      const t = Math.min(1, Math.max(0, (frameIndex - 1460) / 45));
+      const easeT = t * t * (3 - 2 * t);
+
+      // In the 1280x720 video frame, the tea cup & saucer center is at:
+      // X = 855px (approx 66.8% of frame width)
+      // Y = 475px (approx 66.0% of frame height)
+      const cupCenterXRatio = 0.668;
+      const cupCenterYRatio = 0.660;
+
+      // Fit the entire saucer & cup comfortably within mobile width with balanced margins
+      const targetScale = Math.min(this.scale, (this.cw * 0.85) / 440);
+      const targetW = FRAME_WIDTH * targetScale;
+      const targetH = FRAME_HEIGHT * targetScale;
+
+      // Perfectly center the tea cup horizontally on mobile screen
+      const targetDx = (this.cw * 0.5) - (cupCenterXRatio * targetW);
+
+      // Position cup vertically in the golden ratio of the visible upper screen above the bottom card
+      const targetDy = (this.ch * 0.40) - (cupCenterYRatio * targetH);
+
+      dx = this.nx + (targetDx - this.nx) * easeT;
+      dy = this.ny + (targetDy - this.ny) * easeT;
+      dw = this.nw + (targetW - this.nw) * easeT;
+      dh = this.nh + (targetH - this.nh) * easeT;
+    }
+
+    // Direct draw with geometry
+    this.ctx.drawImage(asset, dx, dy, dw, dh);
 
     this.lastRenderedAsset = asset;
     this.lastRenderedIndex = frameIndex;
