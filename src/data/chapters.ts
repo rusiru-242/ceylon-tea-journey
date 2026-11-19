@@ -259,8 +259,8 @@ export const CHAPTERS: Chapter[] = [
     mobileDescription: "Water and tea unite to create a deep amber liquor as orthodox leaves slowly unfurl.",
     meta: ["96°C Spring Water", "3–4 Min Infusion"],
     theme: "white",
-    align: "right",
-    cardPosition: "right",
+    align: "left",
+    cardPosition: "left",
   },
   {
     id: "chapter-13",
