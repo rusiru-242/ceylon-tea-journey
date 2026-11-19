@@ -1,10 +1,12 @@
 import { memo } from 'react';
+import { RotateCcw } from 'lucide-react';
 
 interface FooterProps {
   onNavigate: (chapterId: string) => void;
+  onReplay?: () => void;
 }
 
-export const Footer = memo(function Footer({ onNavigate }: FooterProps) {
+export const Footer = memo(function Footer({ onNavigate, onReplay }: FooterProps) {
   return (
     <footer
       id="footer-section"
@@ -23,6 +25,16 @@ export const Footer = memo(function Footer({ onNavigate }: FooterProps) {
           </div>
 
           <div className="flex flex-wrap items-center gap-6 sm:gap-8 lg:gap-12">
+            {onReplay && (
+              <button
+                type="button"
+                onClick={onReplay}
+                className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-forest-green text-pure-white hover:bg-forest-green/90 transition-all font-label text-label-xs tracking-widest uppercase shadow-xs cursor-pointer"
+              >
+                <RotateCcw className="w-3.5 h-3.5" />
+                <span>Experience Again</span>
+              </button>
+            )}
             <button
               onClick={() => onNavigate('chapter-1')}
               className="font-label text-label-xs tracking-widest uppercase text-forest-green hover:text-deep-gold transition-colors text-left"
@@ -82,6 +94,16 @@ export const Footer = memo(function Footer({ onNavigate }: FooterProps) {
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-muted-slate font-label text-label-xs tracking-wider gap-4 text-center sm:text-left">
           <p>© 2026 CEYLON STORYTELLING INITIATIVE. ALL RIGHTS RESERVED.</p>
           <div className="flex items-center gap-4 sm:gap-6 flex-wrap justify-center">
+            {onReplay && (
+              <button
+                type="button"
+                onClick={onReplay}
+                className="inline-flex items-center gap-2 text-forest-green hover:text-deep-gold font-label text-label-xs tracking-widest uppercase transition-colors cursor-pointer mr-2"
+              >
+                <RotateCcw className="w-3 h-3" />
+                <span>Experience Again</span>
+              </button>
+            )}
             <span>SRI LANKA TEA HERITAGE</span>
             <span>•</span>
             <span>PORTFOLIO EDITORIAL EXPERIENCE</span>

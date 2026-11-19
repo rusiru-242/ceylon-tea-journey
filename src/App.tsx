@@ -1,4 +1,5 @@
 import { useState, useRef, useCallback } from 'react';
+import { RotateCcw } from 'lucide-react';
 import { useFrameLoader } from './hooks/useFrameLoader';
 import { useScrollSequence } from './hooks/useScrollSequence';
 import { LoadingScreen } from './components/LoadingScreen';
@@ -40,6 +41,9 @@ export default function App() {
     isFinalHold,
     finalHoldProgress,
     isWhiteStudio,
+    isRewinding,
+    rewindBlur,
+    rewindScale,
     scrollToChapter,
     scrollToTop,
   } = useScrollSequence({
@@ -85,6 +89,9 @@ export default function App() {
           currentFrame={currentFrame}
           isReady={isReady}
           isWhiteStudio={isWhiteStudio}
+          isRewinding={isRewinding}
+          rewindBlur={rewindBlur}
+          rewindScale={rewindScale}
         />
 
         {/* Synchronized Chapter Overlay Card */}
@@ -94,13 +101,14 @@ export default function App() {
           currentFrame={currentFrame}
           isFinalHold={isFinalHold}
           finalHoldProgress={finalHoldProgress}
+          isRewinding={isRewinding}
           onReplay={scrollToTop}
           onNavigate={scrollToChapter}
         />
       </div>
 
       {/* 5. Minimalist White Monograph Footer (in normal document flow directly below pin-spacer) */}
-      <Footer onNavigate={scrollToChapter} />
+      <Footer onNavigate={scrollToChapter} onReplay={scrollToTop} />
 
       {/* 6. Mobile Drawer Navigation */}
       <MobileMenu
@@ -109,6 +117,24 @@ export default function App() {
         onSelectChapter={scrollToChapter}
         activeChapter={activeChapter}
       />
+
+      {/* 7. Cinematic Rewind Motion Indicator HUD */}
+      {isRewinding && (
+        <div className="fixed inset-0 z-50 pointer-events-none flex flex-col items-center justify-center">
+          <div
+            className="flex items-center gap-3.5 px-7 py-3 rounded-full bg-forest-green/95 text-pure-white backdrop-blur-md border border-deep-gold/40 shadow-2xl transition-all"
+            style={{
+              opacity: Math.min(1, Math.max(0, rewindBlur / 4)),
+              transform: `scale(${0.92 + Math.min(0.08, rewindBlur / 200)})`,
+            }}
+          >
+            <RotateCcw className="w-4 h-4 animate-spin text-deep-gold" />
+            <span className="font-label text-label-xs tracking-widest uppercase font-medium">
+              Rewinding to Origin
+            </span>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

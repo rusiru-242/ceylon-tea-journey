@@ -63,6 +63,12 @@ export function useScrollSequence({
   const lastChProgRef = useRef<number>(0);
   const lastStateUpdateRef = useRef<number>(0);
 
+  // Cinematic Rewind Motion Blur State
+  const [isRewinding, setIsRewinding] = useState(false);
+  const [rewindBlur, setRewindBlur] = useState(0);
+  const [rewindScale, setRewindScale] = useState(1);
+  const isRewindingRef = useRef(false);
+
   // High-performance 60fps/120fps direct rendering loop decoupled from React
   useEffect(() => {
     let isRunning = true;
@@ -220,13 +226,76 @@ export function useScrollSequence({
     }
   }, []);
 
+  /**
+   * Cinematic High-Speed Rewind to Top with Dynamic Motion Blur
+   */
   const scrollToTop = useCallback(() => {
+    if (isRewindingRef.current) return;
+    isRewindingRef.current = true;
+    setIsRewinding(true);
+
+    // High-priority preload frame 1 and initial buffer so landing is instant
     frameManager.requestFrame(1, true).catch(() => {});
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, []);
+    frameManager.updatePreloadWindow(1, 'down');
+
+    const startY = window.scrollY;
+    const startTime = performance.now();
+    // Dynamic cinematic duration between 1.4s and 2.0s
+    const duration = Math.min(2000, Math.max(1400, (startY / TOTAL_SCROLL_DISTANCE) * 1900));
+
+    const prefersReducedMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion) {
+      window.scrollTo(0, 0);
+      setIsRewinding(false);
+      isRewindingRef.current = false;
+      return;
+    }
+
+    const rewindStep = (now: number) => {
+      const elapsed = now - startTime;
+      const p = Math.min(1, elapsed / duration);
+
+      // Smooth Quintic easeInOut curve (fast rush in middle, velvet deceleration at end)
+      const ease = p < 0.5
+        ? 16 * Math.pow(p, 5)
+        : 1 - Math.pow(-2 * p + 2, 5) / 2;
+
+      const currentY = Math.max(0, startY * (1 - ease));
+      window.scrollTo(0, currentY);
+
+      // Parabolic motion blur curve: peaks at midpoint (highest velocity)
+      const intensity = Math.sin(p * Math.PI);
+      const blurVal = Math.round(intensity * 24 * 10) / 10; // Peak 24px vertical motion blur
+      const scaleVal = Math.round((1 - intensity * 0.04) * 1000) / 1000; // Peak 0.96 scale recoil
+
+      setRewindBlur(blurVal);
+      setRewindScale(scaleVal);
+
+      if (p < 1 && currentY > 0) {
+        requestAnimationFrame(rewindStep);
+      } else {
+        window.scrollTo(0, 0);
+        targetFrameRef.current = 1;
+        currentRenderedFrameRef.current = 1;
+        if (onDirectFrameRender) {
+          onDirectFrameRender(1, 'up');
+        }
+        setRewindBlur(0);
+        setRewindScale(1);
+        setIsRewinding(false);
+        isRewindingRef.current = false;
+      }
+    };
+
+    requestAnimationFrame(rewindStep);
+  }, [onDirectFrameRender]);
 
   return {
     ...sequenceState,
+    isRewinding,
+    rewindBlur,
+    rewindScale,
     targetFrameRef,
     scrollToChapter,
     scrollToTop,

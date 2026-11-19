@@ -9,6 +9,7 @@ interface ChapterOverlayProps {
   currentFrame: number;
   isFinalHold?: boolean;
   finalHoldProgress?: number;
+  isRewinding?: boolean;
   onReplay: () => void;
   onNavigate: (chapterId: string) => void;
 }
@@ -18,6 +19,7 @@ export const ChapterOverlay = memo(function ChapterOverlay({
   chapterProgress,
   currentFrame,
   isFinalHold = false,
+  isRewinding = false,
   onReplay,
   onNavigate,
 }: ChapterOverlayProps) {
@@ -168,9 +170,10 @@ export const ChapterOverlay = memo(function ChapterOverlay({
         {activeChapter.align === 'hero' ? (
           <div
             style={{
-              opacity: cardOpacity,
+              opacity: isRewinding ? 0 : cardOpacity,
               transform: `translate3d(0, ${cardTranslateY}px, 0)`,
               willChange: 'opacity, transform',
+              transition: isRewinding ? 'opacity 0.2s ease-out' : undefined,
             }}
             className="w-full max-w-2xl text-left bg-pure-white/95 backdrop-blur-md p-6 sm:p-8 lg:p-12 rounded-sm border-l-4 border-deep-gold shadow-[0_8px_30px_rgb(24,57,43,0.06)] pointer-events-auto"
           >
@@ -238,9 +241,10 @@ export const ChapterOverlay = memo(function ChapterOverlay({
           /* CHAPTER 13 — THE PINNACLE & FINAL CUP HOLD */
           <div
             style={{
-              opacity: cardOpacity,
+              opacity: isRewinding ? 0 : cardOpacity,
               transform: `translate3d(0, ${cardTranslateY}px, 0)`,
               willChange: 'opacity, transform',
+              transition: isRewinding ? 'opacity 0.2s ease-out' : undefined,
             }}
             className="w-full max-w-xl text-left bg-pure-white/95 backdrop-blur-md p-6 sm:p-8 lg:p-14 rounded-sm border-l-4 border-forest-green shadow-[0_8px_30px_rgb(24,57,43,0.06)] pointer-events-auto"
           >
@@ -307,9 +311,10 @@ export const ChapterOverlay = memo(function ChapterOverlay({
           /* CHAPTERS 02 THROUGH 12 — EDITORIAL WHITE CARDS */
           <div
             style={{
-              opacity: cardOpacity,
+              opacity: isRewinding ? 0 : cardOpacity,
               transform: `translate3d(0, ${cardTranslateY}px, 0)`,
               willChange: 'opacity, transform',
+              transition: isRewinding ? 'opacity 0.2s ease-out' : undefined,
             }}
             className={`w-full max-w-lg lg:max-w-xl text-left bg-pure-white/95 backdrop-blur-md ${isBottom ? 'p-5 sm:p-6 lg:p-7' : 'p-6 sm:p-8 lg:p-10'} rounded-sm shadow-[0_8px_30px_rgb(24,57,43,0.06)] pointer-events-auto ${
               isLeft

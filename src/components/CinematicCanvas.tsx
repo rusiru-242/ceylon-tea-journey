@@ -11,10 +11,13 @@ interface CinematicCanvasProps {
   currentFrame: number;
   isReady: boolean;
   isWhiteStudio: boolean;
+  isRewinding?: boolean;
+  rewindBlur?: number;
+  rewindScale?: number;
 }
 
 export const CinematicCanvas = forwardRef<CinematicCanvasHandle, CinematicCanvasProps>(
-  function CinematicCanvas({ currentFrame, isReady, isWhiteStudio }, ref) {
+  function CinematicCanvas({ currentFrame, isReady, isWhiteStudio, isRewinding = false, rewindBlur = 0, rewindScale = 1 }, ref) {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
     const rendererRef = useRef<CanvasRenderer | null>(null);
     const targetFrameRef = useRef<number>(currentFrame);
@@ -122,6 +125,12 @@ export const CinematicCanvas = forwardRef<CinematicCanvasHandle, CinematicCanvas
       <div
         id="cinematic-viewport"
         className="absolute inset-0 w-full h-full z-0 overflow-hidden pointer-events-none bg-pure-white"
+        style={{
+          filter: rewindBlur > 0.5 ? `blur(${rewindBlur}px)` : undefined,
+          transform: rewindScale !== 1 ? `scale(${rewindScale})` : undefined,
+          transition: isRewinding ? 'none' : 'filter 0.3s ease-out, transform 0.3s ease-out',
+          willChange: isRewinding ? 'filter, transform' : 'auto',
+        }}
       >
         <canvas
           ref={canvasRef}
@@ -146,6 +155,18 @@ export const CinematicCanvas = forwardRef<CinematicCanvasHandle, CinematicCanvas
             backgroundSize: '8px 8px',
           }}
         />
+
+        {/* Cinematic Vertical Motion Blur Speed Streaks Overlay during Rewind */}
+        {isRewinding && rewindBlur > 2 && (
+          <div
+            className="absolute inset-0 pointer-events-none z-10 transition-opacity duration-100"
+            style={{
+              opacity: Math.min(0.8, rewindBlur / 24),
+              background: 'repeating-linear-gradient(to right, transparent 0px, transparent 24px, rgba(24,57,43,0.03) 25px, transparent 26px)',
+              backdropFilter: `blur(${Math.round(rewindBlur * 0.4)}px)`,
+            }}
+          />
+        )}
       </div>
     );
   }
