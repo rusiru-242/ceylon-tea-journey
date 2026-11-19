@@ -1,0 +1,867 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CEYLON — From Leaf to Cup | Immersive Experience</title>
+  
+  <!-- Tailwind CSS & System Config -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'forest-green': '#18392B',
+        'charcoal': '#202522',
+        'muted-slate': '#4E5E55',
+        'soft-sage': '#5E735B',
+        'deep-gold': '#8A6A2C',
+        'soft-ivory': '#FAF9F6',
+        'pure-white': '#FFFFFF',
+        'light-primary': '#18392B',
+        'light-on-primary': '#FFFFFF',
+        'light-secondary': '#202522',
+        'light-on-secondary': '#FFFFFF',
+        'light-surface': '#FFFFFF',
+        'light-on-surface': '#18392B',
+        'light-surface-container': '#FAF9F6',
+        'light-on-surface-container': '#202522',
+        'light-outline': '#4E5E55',
+      },
+      borderRadius: {
+        'none': '0px',
+        'sm': '2px',
+        'md': '4px',
+        'lg': '8px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '16px',
+        'gutter-lg': '24px',
+        'gutter-xl': '32px',
+        'gutter-2xl': '48px',
+        'section-gap': '64px',
+        'viewport-pad': '40px',
+      },
+      fontFamily: {
+        'display': ['"Cormorant Garamond"', 'sans-serif'],
+        'headline': ['"Cormorant Garamond"', 'sans-serif'],
+        'title': ['"Inter"', 'sans-serif'],
+        'body': ['"Inter"', 'sans-serif'],
+        'label': ['"Spline Sans Mono"', 'sans-serif'],
+      },
+      fontSize: {
+        'display-2xl': ['72px', { lineHeight: '76px', letterSpacing: '-1px', fontWeight: '400' }],
+        'display-2xl-mobile': ['32px', { lineHeight: '38px', letterSpacing: '-0.5px', fontWeight: '400' }],
+        'display-xl': ['56px', { lineHeight: '62px', letterSpacing: '-0.75px', fontWeight: '400' }],
+        'display-xl-mobile': ['30px', { lineHeight: '36px', letterSpacing: '-0.5px', fontWeight: '400' }],
+        'display-lg': ['44px', { lineHeight: '50px', letterSpacing: '-0.5px', fontWeight: '400' }],
+        'display-lg-mobile': ['28px', { lineHeight: '34px', letterSpacing: '-0.25px', fontWeight: '400' }],
+        'headline-lg': ['36px', { lineHeight: '42px', letterSpacing: '-0.25px', fontWeight: '500' }],
+        'headline-lg-mobile': ['24px', { lineHeight: '30px', letterSpacing: '0px', fontWeight: '500' }],
+        'headline-md': ['28px', { lineHeight: '34px', letterSpacing: '0px', fontWeight: '500' }],
+        'headline-sm': ['22px', { lineHeight: '28px', letterSpacing: '0px', fontWeight: '500' }],
+        'title-lg': ['18px', { lineHeight: '24px', letterSpacing: '-0.1px', fontWeight: '600' }],
+        'body-lg': ['16px', { lineHeight: '26px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-md': ['14px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '400' }],
+        'label-lg': ['13px', { lineHeight: '18px', letterSpacing: '1px', fontWeight: '500' }],
+        'label-sm': ['11px', { lineHeight: '16px', letterSpacing: '1.5px', fontWeight: '500' }],
+        'label-xs': ['10px', { lineHeight: '14px', letterSpacing: '1.5px', fontWeight: '500' }],
+      },
+      transitionDuration: {
+        'frame-scrub': '120ms',
+        'text-fade': '400ms',
+        'subtle-drift': '600ms',
+      },
+      transitionDelay: {
+        'frame-scrub': '0ms',
+        'text-fade': '50ms',
+        'subtle-drift': '0ms',
+      },
+      transitionTimingFunction: {
+        'frame-scrub': 'cubic-bezier(0.16, 1, 0.3, 1)',
+        'text-fade': 'cubic-bezier(0.25, 1, 0.5, 1)',
+        'subtle-drift': 'cubic-bezier(0.16, 1, 0.3, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  
+  <!-- Google Fonts: Cormorant Garamond, Inter, Spline Sans Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&amp;family=Inter:wght@300;400;500;600&amp;family=Spline+Sans+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  
+  <style data-stitch-css-vh="3d2fe953a25d44a1===
+    .material-symbols-outlined {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      line-height: 1 !important;
+      box-sizing: content-box;
+      overflow: hidden;
+      white-space: nowrap;
+      direction: ltr;
+      vertical-align: middle;
+    }
+    
+    html, body {
+      background-color: #FFFFFF;
+      color: #18392B;
+      font-family: &#39;Inter&#39;, sans-serif;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Film Canvas Stage */
+    #film-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+    }
+
+    .chapter-step {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      pointer-events: none;
+    }
+    
+    .interactive-element {
+      pointer-events: auto;
+    }
+
+    .chapter-nav-dot {
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .chapter-nav-dot.active {
+      background-color: #18392B;
+      transform: scale(1.4);
+    }
+
+    /* Clean Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FAF9F6;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #8A6A2C;
+      border-radius: 9999px;
+    }
+  ">
+    .material-symbols-outlined {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      line-height: 1 !important;
+      box-sizing: content-box;
+      overflow: hidden;
+      white-space: nowrap;
+      direction: ltr;
+      vertical-align: middle;
+    }
+    
+    html, body {
+      background-color: #FFFFFF;
+      color: #18392B;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Film Canvas Stage */
+    #film-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+    }
+
+    .chapter-step {
+      min-height: 1024px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      pointer-events: none;
+    }
+    
+    .interactive-element {
+      pointer-events: auto;
+    }
+
+    .chapter-nav-dot {
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .chapter-nav-dot.active {
+      background-color: #18392B;
+      transform: scale(1.4);
+    }
+
+    /* Clean Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FAF9F6;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #8A6A2C;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="min-h-[1024px] bg-pure-white text-forest-green selection:bg-forest-green selection:text-pure-white" data-stitch-vh="min-h-[1024px]===min-h-screen">
+
+  <!-- ========================================================================= -->
+  <!-- 1. MINIMAL FIXED TOP NAVIGATION -->
+  <!-- ========================================================================= -->
+  <header id="main-nav" class="fixed top-0 left-0 w-full z-50 transition-all duration-frame-scrub px-8 lg:px-12 py-6 flex items-center justify-between pointer-events-auto bg-pure-white/90 border-b border-light-outline/20">
+    <!-- LEFT: Brand Mark -->
+    <div class="flex items-center gap-3">
+      <a href="#chapter-1" class="group flex items-center gap-3">
+        <span class="font-display text-headline-md tracking-widest font-normal text-forest-green" id="brand-logo">CEYLON.</span>
+        <span class="font-label text-label-xs text-deep-gold tracking-widest uppercase hidden sm:inline-block pl-3 border-l border-forest-green/20" id="brand-tag">Pure Heritage</span>
+      </a>
+    </div>
+
+    <!-- CENTER: Editorial Navigation Links -->
+    <nav class="hidden md:flex items-center gap-8">
+      <a href="#chapter-1" class="font-label text-label-sm tracking-widest uppercase text-forest-green hover:text-deep-gold transition-colors py-1 relative group nav-link">
+        <span>The Journey</span>
+        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-forest-green transition-all duration-frame-scrub group-hover:w-full"></span>
+      </a>
+      <a href="#chapter-4" class="font-label text-label-sm tracking-widest uppercase text-forest-green hover:text-deep-gold transition-colors py-1 relative group nav-link">
+        <span>The Process</span>
+        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-forest-green transition-all duration-frame-scrub group-hover:w-full"></span>
+      </a>
+      <a href="#chapter-9" class="font-label text-label-sm tracking-widest uppercase text-forest-green hover:text-deep-gold transition-colors py-1 relative group nav-link">
+        <span>Our Heritage</span>
+        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-forest-green transition-all duration-frame-scrub group-hover:w-full"></span>
+      </a>
+    </nav>
+
+    <!-- RIGHT: Minimal Action / Audio & Explore -->
+    <div class="flex items-center gap-4">
+      <button id="audio-toggle" type="button" aria-label="Toggle ambient tea highland sounds" class="flex items-center justify-center w-8 h-8 rounded-full border border-forest-green/30 text-forest-green hover:border-forest-green hover:bg-forest-green/5 transition-all duration-frame-scrub" title="Highland Ambient Sound">
+        <span class="material-symbols-outlined text-body-lg" id="audio-icon">volume_up</span>
+      </button>
+
+      <a href="#chapter-1" class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-forest-green/30 text-forest-green hover:border-forest-green hover:bg-forest-green/5 transition-all duration-frame-scrub">
+        <span class="font-label text-label-xs tracking-widest uppercase">Explore</span>
+        <span class="material-symbols-outlined text-body-md">arrow_downward</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- ========================================================================= -->
+  <!-- 2. FIXED CINEMATIC VIEWPORT (Sticky Visual Stage) -->
+  <!-- ========================================================================= -->
+  <div class="fixed inset-0 w-full h-full z-0 overflow-hidden pointer-events-none bg-pure-white" id="cinematic-viewport">
+    <canvas id="film-canvas" width="1920" height="1080" class="w-full h-full object-cover"></canvas>
+    <div id="studio-blend" class="absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-subtle-drift bg-transparent"></div>
+    <div class="absolute inset-0 pointer-events-none mix-blend-multiply opacity-5 bg-repeat" style="background-image: radial-gradient(#18392B 0.75px, transparent 0.75px); background-size: 8px 8px;"></div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 3. MINIMAL RIGHT VERTICAL PROGRESS INDICATOR (Swiss Editorial) -->
+  <!-- ========================================================================= -->
+  <aside aria-label="Story progression" class="fixed right-6 lg:right-10 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col items-end gap-3 pointer-events-auto">
+    <div class="text-right mb-2">
+      <span id="progress-chapter-num" class="font-label text-label-sm text-forest-green font-medium block">CH. 01 / 13</span>
+      <span id="progress-chapter-name" class="font-display text-body-md tracking-wider text-charcoal block uppercase">The Origin</span>
+    </div>
+
+    <!-- Vertical Timeline Track -->
+    <div class="relative w-4 flex flex-col items-center py-2" id="nav-dots-container">
+      <div class="absolute top-0 bottom-0 w-px bg-forest-green/20"></div>
+      <div id="nav-progress-fill" class="absolute top-0 w-0.5 bg-forest-green transition-all duration-150" style="height: 7.7%;"></div>
+      
+      <div class="flex flex-col gap-4 relative z-10 py-1">
+        <a href="#chapter-1" data-ch="1" class="w-2 h-2 rounded-full bg-forest-green/40 hover:bg-forest-green transition-all chapter-nav-dot active" title="01 — The Origin"></a>
+        <a href="#chapter-2" data-ch="2" class="w-2 h-2 rounded-full bg-forest-green/40 hover:bg-forest-green transition-all chapter-nav-dot" title="02 — The Leaf"></a>
+        <a href="#chapter-3" data-ch="3" class="w-2 h-2 rounded-full bg-forest-green/40 hover:bg-forest-green transition-all chapter-nav-dot" title="03 — The Harvest"></a>
+        <a href="#chapter-4" data-ch="4" class="w-2 h-2 rounded-full bg-forest-green/40 hover:bg-forest-green transition-all chapter-nav-dot" title="04 — The Factory"></a>
+        <a href="#chapter-5" data-ch="5" class="w-2 h-2 rounded-full bg-forest-green/40 hover:bg-forest-green transition-all chapter-nav-dot" title="05 — Withering"></a>
+        <a href="#chapter-6" data-ch="6" class="w-2 h-2 rounded-full bg-forest-green/40 hover:bg-forest-green transition-all chapter-nav-dot" title="06 — Rolling"></a>
+        <a href="#chapter-7" data-ch="7" class="w-2 h-2 rounded-full bg-forest-green/40 hover:bg-forest-green transition-all chapter-nav-dot" title="07 — Oxidation"></a>
+        <a href="#chapter-8" data-ch="8" class="w-2 h-2 rounded-full bg-forest-green/40 hover:bg-forest-green transition-all chapter-nav-dot" title="08 — Drying and Grading"></a>
+        <a href="#chapter-9" data-ch="9" class="w-2 h-2 rounded-full bg-forest-green/40 hover:bg-forest-green transition-all chapter-nav-dot" title="09 — The White Transition"></a>
+        <a href="#chapter-10" data-ch="10" class="w-2 h-2 rounded-full bg-forest-green/40 hover:bg-forest-green transition-all chapter-nav-dot" title="10 — The Tea Experience"></a>
+        <a href="#chapter-11" data-ch="11" class="w-2 h-2 rounded-full bg-forest-green/40 hover:bg-forest-green transition-all chapter-nav-dot" title="11 — Packaging"></a>
+        <a href="#chapter-12" data-ch="12" class="w-2 h-2 rounded-full bg-forest-green/40 hover:bg-forest-green transition-all chapter-nav-dot" title="12 — Brewing"></a>
+        <a href="#chapter-13" data-ch="13" class="w-2 h-2 rounded-full bg-forest-green/40 hover:bg-forest-green transition-all chapter-nav-dot" title="13 — The Perfect Cup"></a>
+      </div>
+    </div>
+
+    <span id="scroll-percentage" class="font-label text-label-xs text-muted-slate tracking-wider mt-1">0%</span>
+  </aside>
+
+  <!-- ========================================================================= -->
+  <!-- 4. SCROLL STORY CONTAINER (13 CHAPTER OVERLAYS) -->
+  <!-- ========================================================================= -->
+  <main class="relative z-20 w-full">
+
+    <!-- CHAPTER 01 — THE ORIGIN -->
+    <section id="chapter-1" class="chapter-step" data-frame-start="1" data-frame-end="15">
+      <div class="w-full max-w-7xl mx-auto px-8 lg:px-16 py-24 flex flex-col justify-between min-h-[1024px]" data-stitch-vh="min-h-[1024px]===min-h-screen">
+        <div class="h-16"></div>
+
+        <div class="max-w-2xl text-left bg-pure-white p-8 lg:p-12 rounded-sm border-l-4 border-deep-gold shadow-sm interactive-element">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="w-8 h-0.5 bg-deep-gold"></span>
+            <span class="font-label text-label-sm text-deep-gold uppercase tracking-widest">THE ART OF CEYLON TEA</span>
+            <span class="font-label text-label-xs text-forest-green uppercase tracking-widest">• CHAPTER 01</span>
+          </div>
+
+          <h1 class="font-display text-display-xl lg:text-display-2xl text-forest-green tracking-tight font-normal mb-5 leading-none">
+            FROM NATURE TO PERFECTION.
+          </h1>
+
+          <p class="font-body text-body-lg text-charcoal max-w-lg mb-8 leading-relaxed font-light text-pretty">
+            A journey through the landscapes, craftsmanship, and traditions behind every cup. High above the misty hills of Sri Lanka, nature begins a remarkable journey.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-6 pt-4 border-t border-forest-green/10">
+            <div class="flex items-center gap-3 text-forest-green">
+              <span class="w-6 h-6 rounded-full border border-forest-green/40 flex items-center justify-center animate-bounce">
+                <span class="material-symbols-outlined text-label-xs">arrow_downward</span>
+              </span>
+              <span class="font-label text-label-sm uppercase tracking-widest">Scroll to unfold film</span>
+            </div>
+            <span class="font-label text-label-xs text-muted-slate uppercase tracking-widest">Nuwara Eliya Highlands • 1,890m</span>
+          </div>
+        </div>
+
+        <div class="bg-pure-white/95 px-6 py-4 rounded-sm border border-forest-green/10 flex items-center justify-between text-forest-green">
+          <span class="font-label text-label-sm tracking-widest uppercase">Ceylon Black Tea Camellia Sinensis</span>
+          <span class="font-label text-label-sm tracking-widest uppercase hidden sm:inline-block">270 Cinematic 1080p Film Frames</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 02 — THE LEAF -->
+    <section id="chapter-2" class="chapter-step" data-frame-start="16" data-frame-end="35">
+      <div class="w-full max-w-7xl mx-auto px-8 lg:px-16 flex items-center justify-end">
+        <div class="max-w-xl text-left bg-pure-white p-8 lg:p-10 rounded-sm border-r-4 border-forest-green shadow-sm interactive-element">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="font-label text-label-sm text-deep-gold uppercase tracking-widest">CHAPTER 02 — THE LEAF</span>
+          </div>
+          <h2 class="font-display text-display-lg text-forest-green mb-4 font-normal text-balance">
+            Nature&#39;s Finest Detail.
+          </h2>
+          <p class="font-body text-body-lg text-charcoal leading-relaxed font-light mb-6 text-pretty">
+            Every exceptional cup begins with the freshness of a tender tea shoot. Two leaves and a bud, kissed by mountain dew and morning sunlight.
+          </p>
+          <div class="flex items-center gap-4 text-label-xs font-label uppercase tracking-widest text-muted-slate">
+            <span>Macro Botanics</span>
+            <span>•</span>
+            <span>Hand-Selected Bud</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 03 — THE HARVEST -->
+    <section id="chapter-3" class="chapter-step" data-frame-start="36" data-frame-end="60">
+      <div class="w-full max-w-7xl mx-auto px-8 lg:px-16 flex items-center justify-start">
+        <div class="max-w-xl text-left bg-pure-white p-8 lg:p-10 rounded-sm border-l-4 border-deep-gold shadow-sm interactive-element">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="font-label text-label-sm text-deep-gold uppercase tracking-widest">CHAPTER 03 — THE HARVEST</span>
+          </div>
+          <h2 class="font-display text-display-lg text-forest-green mb-4 font-normal text-balance">
+            Picked with Purpose.
+          </h2>
+          <p class="font-body text-body-lg text-charcoal leading-relaxed font-light mb-6 text-pretty">
+            Skilled hands carefully select the youngest leaves and buds. Placed inside woven bamboo baskets to prevent bruising and preserve delicate natural aromatics.
+          </p>
+          <div class="flex items-center gap-4 text-label-xs font-label uppercase tracking-widest text-muted-slate">
+            <span>Artisanal Hand Plucking</span>
+            <span>•</span>
+            <span>Woven Bamboo Baskets</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 04 — THE FACTORY -->
+    <section id="chapter-4" class="chapter-step" data-frame-start="61" data-frame-end="85">
+      <div class="w-full max-w-7xl mx-auto px-8 lg:px-16 flex items-center justify-end">
+        <div class="max-w-xl text-left bg-pure-white p-8 lg:p-10 rounded-sm border-r-4 border-forest-green shadow-sm interactive-element">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="font-label text-label-sm text-deep-gold uppercase tracking-widest">CHAPTER 04 — THE FACTORY</span>
+          </div>
+          <h2 class="font-display text-display-lg text-forest-green mb-4 font-normal text-balance">
+            Crafted with Care.
+          </h2>
+          <p class="font-body text-body-lg text-charcoal leading-relaxed font-light mb-6 text-pretty">
+            Fresh leaves enter a world of time-honored craftsmanship and precise processing. Warm industrial lighting guides generational tea artisans through each stage.
+          </p>
+          <div class="flex items-center gap-4 text-label-xs font-label uppercase tracking-widest text-muted-slate">
+            <span>Historic Ceylon Estate</span>
+            <span>•</span>
+            <span>Generational Masters</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 05 — WITHERING -->
+    <section id="chapter-5" class="chapter-step" data-frame-start="86" data-frame-end="115">
+      <div class="w-full max-w-7xl mx-auto px-8 lg:px-16 flex items-center justify-start">
+        <div class="max-w-xl text-left bg-pure-white p-8 lg:p-10 rounded-sm border-l-4 border-deep-gold shadow-sm interactive-element">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="font-label text-label-sm text-deep-gold uppercase tracking-widest">CHAPTER 05 — WITHERING</span>
+          </div>
+          <h2 class="font-display text-display-lg text-forest-green mb-4 font-normal text-balance">
+            The Art of Transformation.
+          </h2>
+          <p class="font-body text-body-lg text-charcoal leading-relaxed font-light mb-6 text-balance">
+            Airflow gradually reduces moisture, preparing the leaves for rolling. Leaves become supple and pliable, releasing a rich verdant bouquet.
+          </p>
+          <div class="flex items-center gap-4 text-label-xs font-label uppercase tracking-widest text-muted-slate">
+            <span>Moisture Reduction: 55%</span>
+            <span>•</span>
+            <span>Controlled Ambient Flow</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 06 — ROLLING -->
+    <section id="chapter-6" class="chapter-step" data-frame-start="116" data-frame-end="135">
+      <div class="w-full max-w-7xl mx-auto px-8 lg:px-16 flex items-center justify-end">
+        <div class="max-w-xl text-left bg-pure-white p-8 lg:p-10 rounded-sm border-r-4 border-forest-green shadow-sm interactive-element">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="font-label text-label-sm text-deep-gold uppercase tracking-widest">CHAPTER 06 — ROLLING</span>
+          </div>
+          <h2 class="font-display text-display-lg text-forest-green mb-4 font-normal text-balance">
+            Crafted Through Motion.
+          </h2>
+          <p class="font-body text-body-lg text-charcoal leading-relaxed font-light mb-6 text-pretty">
+            Rolling twists the softened leaves, preparing them to develop their distinctive character. The delicate cellular structure ruptures to release essential oils.
+          </p>
+          <div class="flex items-center gap-4 text-label-xs font-label uppercase tracking-widest text-muted-slate">
+            <span>Circular Mechanical Rolling</span>
+            <span>•</span>
+            <span>Cellular Rupture</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 07 — OXIDATION -->
+    <section id="chapter-7" class="chapter-step" data-frame-start="136" data-frame-end="150">
+      <div class="w-full max-w-7xl mx-auto px-8 lg:px-16 flex items-center justify-start">
+        <div class="max-w-xl text-left bg-pure-white p-8 lg:p-10 rounded-sm border-l-4 border-deep-gold shadow-sm interactive-element">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="font-label text-label-sm text-deep-gold uppercase tracking-widest">CHAPTER 07 — OXIDATION</span>
+          </div>
+          <h2 class="font-display text-display-lg text-forest-green mb-4 font-normal text-balance">
+            Where Character Develops.
+          </h2>
+          <p class="font-body text-body-lg text-charcoal leading-relaxed font-light mb-6 text-balance">
+            Natural enzymatic oxidation helps develop the rich color, aroma, and flavor of black tea as leaves turn toward copper-auburn.
+          </p>
+          <div class="flex items-center gap-4 text-label-xs font-label uppercase tracking-widest text-muted-slate">
+            <span>Enzymatic Alchemy</span>
+            <span>•</span>
+            <span>Copper Color Transition</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 08 — DRYING AND GRADING -->
+    <section id="chapter-8" class="chapter-step" data-frame-start="151" data-frame-end="166">
+      <div class="w-full max-w-7xl mx-auto px-8 lg:px-16 flex items-center justify-end">
+        <div class="max-w-xl text-left bg-pure-white p-8 lg:p-10 rounded-sm border-r-4 border-forest-green shadow-sm interactive-element">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="font-label text-label-sm text-deep-gold uppercase tracking-widest">CHAPTER 08 — DRYING AND GRADING</span>
+          </div>
+          <h2 class="font-display text-display-lg text-forest-green mb-4 font-normal text-balance">
+            Precision in Every Leaf.
+          </h2>
+          <p class="font-body text-body-lg text-charcoal leading-relaxed font-light mb-6 text-pretty">
+            Controlled drying preserves the tea, while grading separates the finished leaves by size. The final factory stage produces black tea of extraordinary clarity.
+          </p>
+          <div class="flex items-center gap-4 text-label-xs font-label uppercase tracking-widest text-muted-slate">
+            <span>Moisture Lock: 3%</span>
+            <span>•</span>
+            <span>Orthodox Leaf Grading</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 09 — THE WHITE TRANSITION -->
+    <section id="chapter-9" class="chapter-step" data-frame-start="167" data-frame-end="185">
+      <div class="w-full max-w-7xl mx-auto px-8 lg:px-16 flex items-center justify-start">
+        <div class="max-w-xl text-left bg-pure-white p-8 lg:p-12 rounded-sm border-l-4 border-forest-green interactive-element shadow-sm">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="w-6 h-0.5 bg-forest-green"></span>
+            <span class="font-label text-label-sm text-forest-green uppercase tracking-widest">CHAPTER 09 — THE WHITE TRANSITION</span>
+          </div>
+          <h2 class="font-display text-display-lg lg:text-display-xl text-forest-green mb-4 font-normal text-balance">
+            From Craft to Excellence.
+          </h2>
+          <p class="font-body text-body-lg text-charcoal leading-relaxed font-light mb-8 text-pretty">
+            Every carefully processed leaf carries the character of its origin. Here, the finished dark loose leaves emerge onto pure white—isolated like an architectural masterpiece.
+          </p>
+          <div class="flex items-center gap-6 pt-4 border-t border-forest-green/10">
+            <span class="font-label text-label-sm text-deep-gold uppercase tracking-widest">Pure White Studio</span>
+            <span class="font-label text-label-sm text-muted-slate uppercase tracking-widest">Orange Flowery Pekoe</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 10 — THE TEA EXPERIENCE -->
+    <section id="chapter-10" class="chapter-step" data-frame-start="186" data-frame-end="210">
+      <div class="w-full max-w-7xl mx-auto px-8 lg:px-16 flex items-center justify-end">
+        <div class="max-w-xl text-left bg-pure-white p-8 lg:p-12 rounded-sm border-r-4 border-forest-green interactive-element shadow-sm">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="font-label text-label-sm text-forest-green uppercase tracking-widest">CHAPTER 10 — THE TEA EXPERIENCE</span>
+          </div>
+          <h2 class="font-display text-display-lg lg:text-display-xl text-forest-green mb-4 font-normal text-balance">
+            A Richer Experience.
+          </h2>
+          <p class="font-body text-body-lg text-charcoal leading-relaxed font-light mb-8 text-pretty">
+            The finished tea reveals its beautiful amber color and distinctive character. Steeping releases a rich golden hue that captures the highland sunshine of Sri Lanka.
+          </p>
+          <div class="flex items-center gap-6 pt-4 border-t border-forest-green/10">
+            <span class="font-label text-label-sm text-deep-gold uppercase tracking-widest">Golden Amber Liquor</span>
+            <span class="font-label text-label-sm text-muted-slate uppercase tracking-widest">Porcelain Vessel</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 11 — PACKAGING -->
+    <section id="chapter-11" class="chapter-step" data-frame-start="211" data-frame-end="230">
+      <div class="w-full max-w-7xl mx-auto px-8 lg:px-16 flex items-center justify-start">
+        <div class="max-w-xl text-left bg-pure-white p-8 lg:p-12 rounded-sm border-l-4 border-forest-green interactive-element shadow-sm">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="font-label text-label-sm text-forest-green uppercase tracking-widest">CHAPTER 11 — PACKAGING</span>
+          </div>
+          <h2 class="font-display text-display-lg lg:text-display-xl text-forest-green mb-4 font-normal text-balance">
+            Carefully Preserved.
+          </h2>
+          <p class="font-body text-body-lg text-charcoal leading-relaxed font-light mb-8 text-pretty">
+            Thoughtful packaging protects the freshness and aroma of the finished tea. Encased in minimalist ivory tins designed with airtight precision.
+          </p>
+          <div class="flex items-center gap-6 pt-4 border-t border-forest-green/10">
+            <span class="font-label text-label-sm text-deep-gold uppercase tracking-widest">Airtight Ivory Canister</span>
+            <span class="font-label text-label-sm text-muted-slate uppercase tracking-widest">Zero Oxidation Seal</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 12 — BREWING -->
+    <section id="chapter-12" class="chapter-step" data-frame-start="231" data-frame-end="255">
+      <div class="w-full max-w-7xl mx-auto px-8 lg:px-16 flex items-center justify-end">
+        <div class="max-w-xl text-left bg-pure-white p-8 lg:p-12 rounded-sm border-r-4 border-forest-green interactive-element shadow-sm">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="font-label text-label-sm text-forest-green uppercase tracking-widest">CHAPTER 12 — BREWING</span>
+          </div>
+          <h2 class="font-display text-display-lg lg:text-display-xl text-forest-green mb-4 font-normal text-balance">
+            The Perfect Infusion.
+          </h2>
+          <p class="font-body text-body-lg text-charcoal leading-relaxed font-light mb-8 text-pretty">
+            Water and tea come together to release a beautiful golden-amber infusion. Watch through crystal glass as the leaves unfurl and surrender their botanical essence.
+          </p>
+          <div class="flex items-center gap-6 pt-4 border-t border-forest-green/10">
+            <span class="font-label text-label-sm text-deep-gold uppercase tracking-widest">96°C Spring Water</span>
+            <span class="font-label text-label-sm text-muted-slate uppercase tracking-widest">3–4 Min Infusion</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 13 — THE PERFECT CUP -->
+    <section id="chapter-13" class="chapter-step" data-frame-start="256" data-frame-end="270">
+      <div class="w-full max-w-7xl mx-auto px-8 lg:px-16 min-h-[1024px] flex items-center justify-start" data-stitch-vh="min-h-[1024px]===min-h-screen">
+        <div class="max-w-xl min-w-0 text-left bg-pure-white p-8 lg:p-14 rounded-sm border-l-4 border-forest-green interactive-element shadow-sm">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="w-8 h-0.5 bg-deep-gold"></span>
+            <span class="font-label text-label-sm text-forest-green uppercase tracking-widest">CHAPTER 13 — THE PINNACLE</span>
+          </div>
+          
+          <h2 class="font-display text-display-xl lg:text-display-2xl text-forest-green font-normal tracking-tight mb-4 leading-none text-balance">
+            EVERY CUP HAS A JOURNEY.
+          </h2>
+          
+          <p class="font-body text-body-lg text-charcoal leading-relaxed font-light mb-8 text-balance">
+            From the misty highlands of Sri Lanka to a moment of pure perfection. Discover the extraordinary story and timeless heritage behind authentic Ceylon Tea.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-6 pt-6 border-t border-forest-green/15">
+            <a href="#chapter-1" id="replay-btn" class="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-forest-green text-pure-white hover:bg-forest-green/90 transition-all duration-frame-scrub font-label text-label-xs tracking-widest uppercase">
+              <span class="material-symbols-outlined text-body-md">refresh</span>
+              <span>Experience Again</span>
+            </a>
+            
+            <a href="#footer-section" class="font-label text-label-xs tracking-widest uppercase text-forest-green hover:underline">
+              View Heritage &amp; Details
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- 5. MINIMALIST WHITE FOOTER -->
+    <!-- ======================================================================= -->
+    <footer id="footer-section" class="relative z-30 bg-pure-white border-t border-forest-green/10 py-24 px-8 lg:px-16">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-end justify-between pb-16 border-b border-forest-green/10 gap-8">
+          <div>
+            <h2 class="font-display text-display-xl lg:text-display-2xl text-forest-green tracking-tight font-normal leading-none mb-3">
+              CEYLON.
+            </h2>
+            <p class="font-body text-body-lg text-muted-slate font-light">
+              From Leaf to Cup. The Art of Sri Lankan Tea Manufacturing.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-8 lg:gap-12">
+            <a href="#chapter-1" class="font-label text-label-xs tracking-widest uppercase text-forest-green hover:text-deep-gold transition-colors">
+              The Journey
+            </a>
+            <a href="#chapter-4" class="font-label text-label-xs tracking-widest uppercase text-forest-green hover:text-deep-gold transition-colors">
+              The Process
+            </a>
+            <a href="#chapter-9" class="font-label text-label-xs tracking-widest uppercase text-forest-green hover:text-deep-gold transition-colors">
+              Our Heritage
+            </a>
+            <a href="#chapter-13" class="font-label text-label-xs tracking-widest uppercase text-forest-green hover:text-deep-gold transition-colors">
+              The Perfect Cup
+            </a>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 py-16 border-b border-forest-green/10 text-charcoal text-body-md leading-relaxed">
+          <div>
+            <span class="font-label text-label-sm text-forest-green uppercase tracking-widest block mb-2">01 / High Altitude Terroir</span>
+            <p class="font-light text-balance">
+              Grown in the misty, cloud-kissed ridges of Nuwara Eliya and Dimbula, where cool nights and crisp morning air impart unmatched floral notes to every harvest.
+            </p>
+          </div>
+          <div>
+            <span class="font-label text-label-sm text-forest-green uppercase tracking-widest block mb-2">02 / Orthodox Mastery</span>
+            <p class="font-light text-balance">
+              Hand-picked with dedication, withered over gentle ambient air, and rolled on century-old tables to unleash the prized ruby-amber liquor of Ceylon.
+            </p>
+          </div>
+          <div>
+            <span class="font-label text-label-sm text-forest-green uppercase tracking-widest block mb-2">03 / Modern Purity</span>
+            <p class="font-light text-balance">
+              From the lush green mountain contours into a pristine porcelain cup. A singular journey of botanical excellence preserved in every infusion.
+            </p>
+          </div>
+        </div>
+
+        <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-muted-slate font-label text-label-xs tracking-wider gap-4">
+          <p>© 2026 CEYLON STORYTELLING INITIATIVE. ALL RIGHTS RESERVED.</p>
+          <div class="flex items-center gap-6">
+            <span>SRI LANKA TEA HERITAGE</span>
+            <span>•</span>
+            <span>PORTFOLIO EDITORIAL EXPERIENCE</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Film Scrub Engine -->
+  <script>
+    (function() {
+      const TOTAL_FRAMES = 270;
+      const canvas = document.getElementById('film-canvas');
+      const ctx = canvas.getContext('2d');
+      const studioBlend = document.getElementById('studio-blend');
+      const progressChapterNum = document.getElementById('progress-chapter-num');
+      const progressChapterName = document.getElementById('progress-chapter-name');
+      const navProgressFill = document.getElementById('nav-progress-fill');
+      const scrollPercentage = document.getElementById('scroll-percentage');
+      const navDots = document.querySelectorAll('.chapter-nav-dot');
+      
+      const frames = [];
+      let loadedCount = 0;
+      let currentFrameIndex = 1;
+      let targetFrameIndex = 1;
+
+      const chapters = [
+        { ch: 1, start: 1, end: 15, name: "The Origin", theme: "dark" },
+        { ch: 2, start: 16, end: 35, name: "The Leaf", theme: "dark" },
+        { ch: 3, start: 36, end: 60, name: "The Harvest", theme: "dark" },
+        { ch: 4, start: 61, end: 85, name: "The Factory", theme: "warm" },
+        { ch: 5, start: 86, end: 115, name: "Withering", theme: "warm" },
+        { ch: 6, start: 116, end: 135, name: "Rolling", theme: "warm" },
+        { ch: 7, start: 136, end: 150, name: "Oxidation", theme: "warm" },
+        { ch: 8, start: 151, end: 166, name: "Drying & Grading", theme: "warm" },
+        { ch: 9, start: 167, end: 185, name: "White Transition", theme: "white" },
+        { ch: 10, start: 186, end: 210, name: "The Tea Experience", theme: "white" },
+        { ch: 11, start: 211, end: 230, name: "Packaging", theme: "white" },
+        { ch: 12, start: 231, end: 255, name: "Brewing", theme: "white" },
+        { ch: 13, start: 256, end: 270, name: "The Perfect Cup", theme: "white" }
+      ];
+
+      function getFramePath(index) {
+        const numStr = String(index).padStart(3, '0');
+        return `../../frames/ezgif-frame-${numStr}.jpg`;
+      }
+
+      function preloadFrames() {
+        for (let i = 1; i <= TOTAL_FRAMES; i++) {
+          const img = new Image();
+          img.src = getFramePath(i);
+          img.onload = () => {
+            loadedCount++;
+            if (i === 1) drawFrame(1);
+          };
+          frames[i] = img;
+        }
+      }
+
+      function drawFrame(index) {
+        const img = frames[index];
+        if (!img || !img.complete) return;
+
+        const cw = canvas.width;
+        const ch = canvas.height;
+        const iw = img.naturalWidth || 1920;
+        const ih = img.naturalHeight || 1080;
+
+        const scale = Math.max(cw / iw, ch / ih);
+        const nw = iw * scale;
+        const nh = ih * scale;
+        const nx = (cw - nw) / 2;
+        const ny = (ch - nh) / 2;
+
+        ctx.clearRect(0, 0, cw, ch);
+        ctx.drawImage(img, nx, ny, nw, nh);
+      }
+
+      function resizeCanvas() {
+        const dpr = window.devicePixelRatio || 1;
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+        ctx.scale(dpr, dpr);
+        drawFrame(Math.round(currentFrameIndex));
+      }
+
+      function renderLoop() {
+        const diff = targetFrameIndex - currentFrameIndex;
+        if (Math.abs(diff) > 0.05) {
+          currentFrameIndex += diff * 0.15;
+          const frameToDraw = Math.min(TOTAL_FRAMES, Math.max(1, Math.round(currentFrameIndex)));
+          drawFrame(frameToDraw);
+        }
+        requestAnimationFrame(renderLoop);
+      }
+
+      function onScroll() {
+        const scrollY = window.scrollY;
+        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = Math.min(1, Math.max(0, scrollY / (maxScroll || 1)));
+
+        targetFrameIndex = 1 + progress * (TOTAL_FRAMES - 1);
+
+        const pct = Math.round(progress * 100);
+        if (scrollPercentage) scrollPercentage.textContent = `${pct}%`;
+        if (navProgressFill) navProgressFill.style.height = `${pct}%`;
+
+        const currentIdx = Math.round(targetFrameIndex);
+        let activeChap = chapters[0];
+        for (const ch of chapters) {
+          if (currentIdx >= ch.start && currentIdx <= ch.end) {
+            activeChap = ch;
+            break;
+          }
+        }
+
+        if (progressChapterNum) {
+          progressChapterNum.textContent = `CH. ${String(activeChap.ch).padStart(2, '0')} / 13`;
+        }
+        if (progressChapterName) {
+          progressChapterName.textContent = activeChap.name;
+        }
+
+        navDots.forEach(dot => {
+          const dotCh = parseInt(dot.getAttribute('data-ch'), 10);
+          if (dotCh === activeChap.ch) {
+            dot.classList.add('active');
+            dot.style.backgroundColor = '#18392B';
+            dot.style.transform = 'scale(1.4)';
+          } else {
+            dot.classList.remove('active');
+            dot.style.backgroundColor = 'rgba(24, 57, 43, 0.4)';
+            dot.style.transform = 'scale(1)';
+          }
+        });
+
+        if (currentIdx >= 166) {
+          const whiteRatio = Math.min(1, (currentIdx - 166) / 10);
+          studioBlend.style.opacity = whiteRatio * 0.15;
+          document.body.style.backgroundColor = '#FFFFFF';
+        } else {
+          studioBlend.style.opacity = 0;
+        }
+      }
+
+      const audioToggle = document.getElementById('audio-toggle');
+      const audioIcon = document.getElementById('audio-icon');
+      let audioPlaying = false;
+
+      if (audioToggle) {
+        audioToggle.addEventListener('click', () => {
+          audioPlaying = !audioPlaying;
+          if (audioPlaying) {
+            audioIcon.textContent = 'volume_up';
+            audioToggle.classList.add('bg-forest-green', 'text-pure-white');
+            audioToggle.classList.remove('text-forest-green');
+          } else {
+            audioIcon.textContent = 'volume_off';
+            audioToggle.classList.remove('bg-forest-green', 'text-pure-white');
+            audioToggle.classList.add('text-forest-green');
+          }
+        });
+      }
+
+      window.addEventListener('resize', resizeCanvas);
+      window.addEventListener('scroll', onScroll, { passive: true });
+      
+      preloadFrames();
+      resizeCanvas();
+      renderLoop();
+      onScroll();
+    })();
+  </script>
+
+
+</body></html>
