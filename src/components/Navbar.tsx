@@ -1,6 +1,5 @@
 import { memo } from 'react';
 import { Menu, ArrowDown } from 'lucide-react';
-import { AmbientAudio } from './AmbientAudio';
 import { Chapter } from '../data/chapters';
 
 interface NavbarProps {
@@ -79,9 +78,6 @@ export const Navbar = memo(function Navbar({ activeChapter, onOpenMobileMenu, on
         <span className="md:hidden font-label text-label-xs tracking-wider uppercase px-2.5 py-1 rounded-full bg-forest-green/10 text-forest-green font-medium">
           CH. {String(activeChapter.ch).padStart(2, '0')} / 13
         </span>
-
-        {/* Ambient Sound Generator */}
-        <AmbientAudio />
 
         {/* Desktop Explore Button */}
         <a
