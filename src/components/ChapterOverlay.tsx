@@ -158,13 +158,19 @@ export const ChapterOverlay = memo(function ChapterOverlay({
 
   return (
     <div
-      className={`absolute inset-0 z-20 w-full h-full pointer-events-none flex flex-col px-6 sm:px-10 md:px-12 lg:px-16 xl:px-20 transition-all duration-300 ${
+      className={`absolute inset-0 z-20 w-full h-full pointer-events-none flex flex-col px-4 sm:px-8 md:px-10 lg:px-16 xl:px-20 transition-all duration-300 ${
         isBottom
-          ? 'justify-end pb-8 sm:pb-12 lg:pb-14'
-          : 'justify-center py-16 sm:py-20'
+          ? 'justify-end pb-16 sm:pb-14 md:pb-12 lg:pb-14'
+          : 'justify-end pb-16 sm:pb-14 md:pb-12 lg:justify-center lg:py-16'
       }`}
     >
-      <div className={`w-full flex items-center ${isLeft ? 'justify-start' : 'justify-end pr-10 sm:pr-14 lg:pr-20 xl:pr-24'}`}>
+      <div
+        className={`w-full flex items-center ${
+          isLeft
+            ? 'justify-center sm:justify-start'
+            : 'justify-center sm:justify-end sm:pr-4 md:pr-8 lg:pr-20 xl:pr-24'
+        }`}
+      >
         
         {/* CHAPTER 01 — HERO COMPOSITION */}
         {activeChapter.align === 'hero' ? (
@@ -175,7 +181,7 @@ export const ChapterOverlay = memo(function ChapterOverlay({
               willChange: 'opacity, transform',
               transition: isRewinding ? 'opacity 0.2s ease-out' : undefined,
             }}
-            className="w-full max-w-2xl text-left bg-pure-white/95 backdrop-blur-md p-6 sm:p-8 lg:p-12 rounded-sm border-l-4 border-deep-gold shadow-[0_8px_30px_rgb(24,57,43,0.06)] pointer-events-auto"
+            className="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl text-left bg-pure-white/92 sm:bg-pure-white/95 backdrop-blur-md p-4 sm:p-6 md:p-8 lg:p-12 rounded-sm border-l-4 border-deep-gold shadow-[0_8px_30px_rgb(24,57,43,0.06)] pointer-events-auto"
           >
             {/* Staggered Eyebrow */}
             <div
@@ -183,10 +189,10 @@ export const ChapterOverlay = memo(function ChapterOverlay({
                 opacity: labelOpacity,
                 transform: `translate3d(0, ${labelTranslateY}px, 0)`,
               }}
-              className="flex items-center gap-3 mb-4"
+              className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3 lg:mb-4"
             >
-              <span className="w-8 h-0.5 bg-deep-gold" />
-              <span className="font-label text-label-xs sm:text-label-sm text-deep-gold uppercase tracking-widest font-medium">
+              <span className="w-5 sm:w-8 h-0.5 bg-deep-gold" />
+              <span className="font-label text-[10px] sm:text-label-xs sm:text-label-sm text-deep-gold uppercase tracking-widest font-medium">
                 THE ART OF CEYLON TEA
               </span>
               <span className="font-label text-label-xs text-forest-green uppercase tracking-widest hidden sm:inline font-medium">
@@ -200,7 +206,7 @@ export const ChapterOverlay = memo(function ChapterOverlay({
                 opacity: headingOpacity,
                 transform: `translate3d(0, ${headingTranslateY}px, 0)`,
               }}
-              className="font-display text-display-xl lg:text-display-2xl text-forest-green tracking-tight font-normal mb-5 leading-none"
+              className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-display-2xl text-forest-green tracking-tight font-normal mb-2 sm:mb-3 lg:mb-5 leading-tight sm:leading-none"
             >
               {activeChapter.title}
             </h1>
@@ -211,7 +217,7 @@ export const ChapterOverlay = memo(function ChapterOverlay({
                 opacity: descOpacity,
                 transform: `translate3d(0, ${descTranslateY}px, 0)`,
               }}
-              className="font-body text-body-md sm:text-body-lg text-charcoal max-w-lg mb-8 leading-relaxed font-light"
+              className="font-body text-xs sm:text-sm lg:text-body-lg text-charcoal max-w-lg mb-3 sm:mb-5 lg:mb-8 leading-relaxed font-light line-clamp-3 sm:line-clamp-none"
             >
               {activeChapter.description}
             </p>
@@ -222,17 +228,17 @@ export const ChapterOverlay = memo(function ChapterOverlay({
                 opacity: metaOpacity,
                 transform: `translate3d(0, ${metaTranslateY}px, 0)`,
               }}
-              className="flex flex-wrap items-center gap-6 pt-4 border-t border-forest-green/10"
+              className="flex flex-wrap items-center gap-3 sm:gap-4 lg:gap-6 pt-2.5 sm:pt-3 lg:pt-4 border-t border-forest-green/10"
             >
-              <div className="flex items-center gap-3 text-forest-green">
-                <span className="w-6 h-6 rounded-full border border-forest-green/40 flex items-center justify-center animate-bounce">
-                  <ArrowDown className="w-3.5 h-3.5" />
+              <div className="flex items-center gap-2 sm:gap-3 text-forest-green">
+                <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full border border-forest-green/40 flex items-center justify-center animate-bounce">
+                  <ArrowDown className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                 </span>
-                <span className="font-label text-label-xs sm:text-label-sm uppercase tracking-widest font-medium">
+                <span className="font-label text-[10px] sm:text-label-xs sm:text-label-sm uppercase tracking-widest font-medium">
                   Scroll to unfold film
                 </span>
               </div>
-              <span className="font-label text-label-xs text-muted-slate uppercase tracking-widest">
+              <span className="font-label text-[9px] sm:text-label-xs text-muted-slate uppercase tracking-widest hidden sm:inline">
                 Nuwara Eliya Highlands • 1,890m
               </span>
             </div>
@@ -246,17 +252,17 @@ export const ChapterOverlay = memo(function ChapterOverlay({
               willChange: 'opacity, transform',
               transition: isRewinding ? 'opacity 0.2s ease-out' : undefined,
             }}
-            className="w-full max-w-xl text-left bg-pure-white/95 backdrop-blur-md p-6 sm:p-8 lg:p-14 rounded-sm border-l-4 border-forest-green shadow-[0_8px_30px_rgb(24,57,43,0.06)] pointer-events-auto"
+            className="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-xl text-left bg-pure-white/92 sm:bg-pure-white/95 backdrop-blur-md p-4 sm:p-6 md:p-8 lg:p-14 rounded-sm border-l-4 border-forest-green shadow-[0_8px_30px_rgb(24,57,43,0.06)] pointer-events-auto"
           >
             <div
               style={{
                 opacity: labelOpacity,
                 transform: `translate3d(0, ${labelTranslateY}px, 0)`,
               }}
-              className="flex items-center gap-3 mb-4"
+              className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3 lg:mb-4"
             >
-              <span className="w-8 h-0.5 bg-deep-gold" />
-              <span className="font-label text-label-xs sm:text-label-sm text-forest-green uppercase tracking-widest font-medium">
+              <span className="w-5 sm:w-8 h-0.5 bg-deep-gold" />
+              <span className="font-label text-[10px] sm:text-label-xs sm:text-label-sm text-forest-green uppercase tracking-widest font-medium">
                 CHAPTER 13 — THE PINNACLE
               </span>
             </div>
@@ -266,7 +272,7 @@ export const ChapterOverlay = memo(function ChapterOverlay({
                 opacity: headingOpacity,
                 transform: `translate3d(0, ${headingTranslateY}px, 0)`,
               }}
-              className="font-display text-display-xl lg:text-display-2xl text-forest-green font-normal tracking-tight mb-4 leading-none"
+              className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-display-2xl text-forest-green font-normal tracking-tight mb-2 sm:mb-3 lg:mb-4 leading-tight sm:leading-none"
             >
               {activeChapter.title}
             </h2>
@@ -276,7 +282,7 @@ export const ChapterOverlay = memo(function ChapterOverlay({
                 opacity: descOpacity,
                 transform: `translate3d(0, ${descTranslateY}px, 0)`,
               }}
-              className="font-body text-body-md sm:text-body-lg text-charcoal leading-relaxed font-light mb-8"
+              className="font-body text-xs sm:text-sm lg:text-body-lg text-charcoal leading-relaxed font-light mb-3 sm:mb-5 lg:mb-8 line-clamp-3 sm:line-clamp-none"
             >
               {activeChapter.description}
             </p>
@@ -286,22 +292,22 @@ export const ChapterOverlay = memo(function ChapterOverlay({
                 opacity: metaOpacity,
                 transform: `translate3d(0, ${metaTranslateY}px, 0)`,
               }}
-              className="flex flex-wrap items-center gap-6 pt-6 border-t border-forest-green/15"
+              className="flex flex-wrap items-center gap-2.5 sm:gap-4 lg:gap-6 pt-3 sm:pt-4 lg:pt-6 border-t border-forest-green/15"
             >
               <button
                 type="button"
                 id="replay-btn"
                 onClick={onReplay}
-                className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-forest-green text-pure-white hover:bg-forest-green/90 transition-all duration-frame-scrub font-label text-label-xs tracking-widest uppercase shadow-sm cursor-pointer"
+                className="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-5 lg:px-6 py-2 sm:py-2.5 lg:py-3 rounded-full bg-forest-green text-pure-white hover:bg-forest-green/90 transition-all duration-frame-scrub font-label text-[10px] sm:text-label-xs tracking-widest uppercase shadow-sm cursor-pointer"
               >
-                <RotateCcw className="w-4 h-4" />
+                <RotateCcw className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 <span>Experience Again</span>
               </button>
 
               <button
                 type="button"
                 onClick={() => onNavigate('footer-section')}
-                className="font-label text-label-xs tracking-widest uppercase text-forest-green hover:underline cursor-pointer"
+                className="font-label text-[10px] sm:text-label-xs tracking-widest uppercase text-forest-green hover:underline cursor-pointer"
               >
                 View Heritage &amp; Details
               </button>
@@ -316,7 +322,11 @@ export const ChapterOverlay = memo(function ChapterOverlay({
               willChange: 'opacity, transform',
               transition: isRewinding ? 'opacity 0.2s ease-out' : undefined,
             }}
-            className={`w-full max-w-lg lg:max-w-xl text-left bg-pure-white/95 backdrop-blur-md ${isBottom ? 'p-5 sm:p-6 lg:p-7' : 'p-6 sm:p-8 lg:p-10'} rounded-sm shadow-[0_8px_30px_rgb(24,57,43,0.06)] pointer-events-auto ${
+            className={`w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl text-left bg-pure-white/92 sm:bg-pure-white/95 backdrop-blur-md ${
+              isBottom
+                ? 'p-3.5 sm:p-5 lg:p-7'
+                : 'p-3.5 sm:p-5 md:p-6 lg:p-10'
+            } rounded-sm shadow-[0_8px_30px_rgb(24,57,43,0.06)] pointer-events-auto ${
               isLeft
                 ? isWhite ? 'border-l-4 border-forest-green' : 'border-l-4 border-deep-gold'
                 : 'border-r-4 border-forest-green'
@@ -328,11 +338,11 @@ export const ChapterOverlay = memo(function ChapterOverlay({
                 opacity: labelOpacity,
                 transform: `translate3d(0, ${labelTranslateY}px, 0)`,
               }}
-              className="flex items-center gap-3 mb-3"
+              className="flex items-center gap-2 sm:gap-3 mb-1 sm:mb-2 lg:mb-3"
             >
-              {isWhite && <span className="w-6 h-0.5 bg-forest-green" />}
+              {isWhite && <span className="w-4 sm:w-6 h-0.5 bg-forest-green" />}
               <span
-                className={`font-label text-label-xs sm:text-label-sm uppercase tracking-widest font-medium ${
+                className={`font-label text-[10px] sm:text-label-xs sm:text-label-sm uppercase tracking-widest font-medium ${
                   isWhite ? 'text-forest-green' : 'text-deep-gold'
                 }`}
               >
@@ -346,7 +356,7 @@ export const ChapterOverlay = memo(function ChapterOverlay({
                 opacity: headingOpacity,
                 transform: `translate3d(0, ${headingTranslateY}px, 0)`,
               }}
-              className="font-display text-display-lg lg:text-display-xl text-forest-green mb-4 font-normal leading-tight"
+              className="font-display text-xl sm:text-2xl md:text-3xl lg:text-display-xl text-forest-green mb-1 sm:mb-2 lg:mb-4 font-normal leading-tight"
             >
               {activeChapter.title}
             </h2>
@@ -357,7 +367,7 @@ export const ChapterOverlay = memo(function ChapterOverlay({
                 opacity: descOpacity,
                 transform: `translate3d(0, ${descTranslateY}px, 0)`,
               }}
-              className="font-body text-body-md sm:text-body-lg text-charcoal leading-relaxed font-light mb-6"
+              className="font-body text-xs sm:text-sm lg:text-body-lg text-charcoal leading-relaxed font-light mb-2.5 sm:mb-3.5 lg:mb-6 line-clamp-2 sm:line-clamp-3 lg:line-clamp-none"
             >
               {activeChapter.description}
             </p>
@@ -368,15 +378,15 @@ export const ChapterOverlay = memo(function ChapterOverlay({
                 opacity: metaOpacity,
                 transform: `translate3d(0, ${metaTranslateY}px, 0)`,
               }}
-              className="flex flex-wrap items-center gap-4 text-label-xs font-label uppercase tracking-widest text-muted-slate pt-3 border-t border-forest-green/10"
+              className="flex flex-wrap items-center gap-2 sm:gap-3 lg:gap-4 text-[9px] sm:text-label-xs font-label uppercase tracking-widest text-muted-slate pt-2 sm:pt-2.5 lg:pt-3 border-t border-forest-green/10"
             >
               {activeChapter.meta.map((m, idx) => (
-                <span key={idx} className="flex items-center gap-4">
+                <span key={idx} className="flex items-center gap-2 sm:gap-4">
                   {idx > 0 && <span>•</span>}
                   <span>{m}</span>
                 </span>
               ))}
-              <span className="ml-auto font-label text-[10px] text-muted-slate/60">
+              <span className="ml-auto font-label text-[9px] sm:text-[10px] text-muted-slate/60">
                 FRAME {String(currentFrame).padStart(4, '0')} / {TOTAL_FRAMES}
               </span>
             </div>
