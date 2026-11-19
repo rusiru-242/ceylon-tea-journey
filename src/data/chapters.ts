@@ -229,8 +229,8 @@ export const CHAPTERS: Chapter[] = [
     mobileDescription: "The finished tea reveals rich golden hues capturing the radiant highland sunshine of Sri Lanka.",
     meta: ["Golden Amber Liquor", "Porcelain Vessel"],
     theme: "white",
-    align: "right",
-    cardPosition: "right",
+    align: "left",
+    cardPosition: "left",
   },
   {
     id: "chapter-11",
