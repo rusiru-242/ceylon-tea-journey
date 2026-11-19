@@ -73,7 +73,7 @@ export default function App() {
       />
 
       {/* 4. PINNED CINEMATIC STORYTELLING STAGE */}
-      {/* GSAP ScrollTrigger pins this stage for 28,888px with automatic pinSpacing so the footer cannot overlap */}
+      {/* GSAP ScrollTrigger pins this stage for 27,188px with automatic pinSpacing so the footer cannot overlap */}
       <div
         ref={stageRef}
         id="pinned-story-stage"

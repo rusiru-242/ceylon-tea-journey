@@ -19,11 +19,11 @@ export interface Chapter {
  * Recalibrated Scroll Timeline Configuration for 1,649 WebP Frames
  * - Normal scenes (plantations, harvesting, factory): 14px per frame (Slow, immersive cinematic pacing)
  * - Final tea pouring scene (brewing & cup pouring): 28px per frame (Ultra-slow cinematic cadence)
- * - Final cup hold (completed cup reveal before footer): 2,400px
+ * - Final cup hold (completed cup reveal before footer): 700px (Concise, elegant hold)
  */
 export const NORMAL_SCROLL_PX_PER_FRAME = 14;
 export const FINAL_POURING_SCROLL_PX_PER_FRAME = 28;
-export const FINAL_CUP_HOLD_PX = 2400;
+export const FINAL_CUP_HOLD_PX = 700;
 
 // The frame where the slow cinematic pouring begins (Chapter 12 Brewing & Pouring)
 export const SLOW_SCENE_START_FRAME = 1405;
@@ -31,8 +31,8 @@ export const SLOW_SCENE_START_FRAME = 1405;
 // Cumulative scroll distances for 1,649 frames
 export const DIST_NORMAL = (SLOW_SCENE_START_FRAME - 1) * NORMAL_SCROLL_PX_PER_FRAME; // 1,404 * 14 = 19,656px
 export const DIST_FINAL_SCENE = (1649 - SLOW_SCENE_START_FRAME) * FINAL_POURING_SCROLL_PX_PER_FRAME; // 244 * 28 = 6,832px
-export const DIST_FINAL_HOLD = FINAL_CUP_HOLD_PX; // 2,400px
-export const TOTAL_SCROLL_DISTANCE = DIST_NORMAL + DIST_FINAL_SCENE + DIST_FINAL_HOLD; // 28,888px
+export const DIST_FINAL_HOLD = FINAL_CUP_HOLD_PX; // 700px
+export const TOTAL_SCROLL_DISTANCE = DIST_NORMAL + DIST_FINAL_SCENE + DIST_FINAL_HOLD; // 27,188px
 
 /**
  * Maps normalized ScrollTrigger progress (0.0 to 1.0) to frame index (1 to 1649)
