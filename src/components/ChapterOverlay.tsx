@@ -327,14 +327,14 @@ export const ChapterOverlay = memo(function ChapterOverlay({
               willChange: 'opacity, transform',
               transition: isRewinding ? 'opacity 0.2s ease-out' : undefined,
             }}
-            className={`w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl text-left bg-pure-white/92 sm:bg-pure-white/95 backdrop-blur-md ${
+            className={`w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-xl text-left bg-pure-white/92 sm:bg-pure-white/95 backdrop-blur-md ${
               isBottom
-                ? 'p-3.5 sm:p-5 lg:p-7'
-                : 'p-3.5 sm:p-5 md:p-6 lg:p-10'
+                ? 'p-4 sm:p-6 lg:p-7'
+                : 'p-4 sm:p-6 md:p-8 lg:p-10'
             } rounded-sm shadow-[0_8px_30px_rgb(24,57,43,0.06)] pointer-events-auto ${
               isLeft
                 ? isWhite ? 'border-l-4 border-forest-green' : 'border-l-4 border-deep-gold'
-                : 'border-r-4 border-forest-green'
+                : 'border-l-4 border-forest-green lg:border-l-0 lg:border-r-4'
             }`}
           >
             {/* Staggered Eyebrow */}
@@ -343,9 +343,9 @@ export const ChapterOverlay = memo(function ChapterOverlay({
                 opacity: labelOpacity,
                 transform: `translate3d(0, ${labelTranslateY}px, 0)`,
               }}
-              className="flex items-center gap-2 sm:gap-3 mb-1 sm:mb-2 lg:mb-3"
+              className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3 lg:mb-3"
             >
-              {isWhite && <span className="w-4 sm:w-6 h-0.5 bg-forest-green" />}
+              <span className="w-5 sm:w-8 h-0.5 bg-deep-gold" />
               <span
                 className={`font-label text-[10px] sm:text-label-xs sm:text-label-sm uppercase tracking-widest font-medium ${
                   isWhite ? 'text-forest-green' : 'text-deep-gold'
@@ -361,7 +361,7 @@ export const ChapterOverlay = memo(function ChapterOverlay({
                 opacity: headingOpacity,
                 transform: `translate3d(0, ${headingTranslateY}px, 0)`,
               }}
-              className="font-display text-xl sm:text-2xl md:text-3xl lg:text-display-xl text-forest-green mb-1 sm:mb-2 lg:mb-4 font-normal leading-tight"
+              className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-display-xl text-forest-green mb-2 sm:mb-3 lg:mb-4 font-normal leading-tight"
             >
               {activeChapter.title}
             </h2>
@@ -372,7 +372,7 @@ export const ChapterOverlay = memo(function ChapterOverlay({
                 opacity: descOpacity,
                 transform: `translate3d(0, ${descTranslateY}px, 0)`,
               }}
-              className="font-body text-xs sm:text-sm lg:text-body-lg text-charcoal leading-relaxed font-light mb-2.5 sm:mb-3.5 lg:mb-6 line-clamp-2 sm:line-clamp-3 lg:line-clamp-none"
+              className="font-body text-xs sm:text-sm lg:text-body-lg text-charcoal leading-relaxed font-light mb-3 sm:mb-5 lg:mb-6 line-clamp-3 sm:line-clamp-none"
             >
               {activeChapter.description}
             </p>
@@ -383,10 +383,10 @@ export const ChapterOverlay = memo(function ChapterOverlay({
                 opacity: metaOpacity,
                 transform: `translate3d(0, ${metaTranslateY}px, 0)`,
               }}
-              className="flex flex-wrap items-center gap-2 sm:gap-3 lg:gap-4 text-[9px] sm:text-label-xs font-label uppercase tracking-widest text-muted-slate pt-2 sm:pt-2.5 lg:pt-3 border-t border-forest-green/10"
+              className="flex flex-wrap items-center gap-2.5 sm:gap-4 lg:gap-4 text-[10px] sm:text-label-xs font-label uppercase tracking-widest text-muted-slate pt-2.5 sm:pt-3 lg:pt-3 border-t border-forest-green/10"
             >
               {activeChapter.meta.map((m, idx) => (
-                <span key={idx} className="flex items-center gap-2 sm:gap-4">
+                <span key={idx} className="flex items-center gap-2 sm:gap-3">
                   {idx > 0 && <span>•</span>}
                   <span>{m}</span>
                 </span>
