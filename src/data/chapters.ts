@@ -184,8 +184,8 @@ export const CHAPTERS: Chapter[] = [
     mobileDescription: "Enzymatic oxidation develops the rich color, aroma, and distinctive body of orthodox black tea.",
     meta: ["Enzymatic Alchemy", "Copper Color Transition"],
     theme: "warm",
-    align: "right",
-    cardPosition: "right",
+    align: "left",
+    cardPosition: "left",
   },
   {
     id: "chapter-8",
