@@ -152,9 +152,16 @@ export const ChapterOverlay = memo(function ChapterOverlay({
 
   const isLeft = activeChapter.cardPosition === 'left';
   const isWhite = activeChapter.theme === 'white';
+  const isBottom = activeChapter.verticalPosition === 'bottom' || activeChapter.ch === 12;
 
   return (
-    <div className="absolute inset-0 z-20 w-full h-full pointer-events-none flex flex-col justify-center px-6 sm:px-10 md:px-12 lg:px-16 xl:px-20 py-16 sm:py-20">
+    <div
+      className={`absolute inset-0 z-20 w-full h-full pointer-events-none flex flex-col px-6 sm:px-10 md:px-12 lg:px-16 xl:px-20 transition-all duration-300 ${
+        isBottom
+          ? 'justify-end pb-8 sm:pb-12 lg:pb-14'
+          : 'justify-center py-16 sm:py-20'
+      }`}
+    >
       <div className={`w-full flex items-center ${isLeft ? 'justify-start' : 'justify-end pr-10 sm:pr-14 lg:pr-20 xl:pr-24'}`}>
         
         {/* CHAPTER 01 — HERO COMPOSITION */}
@@ -304,7 +311,7 @@ export const ChapterOverlay = memo(function ChapterOverlay({
               transform: `translate3d(0, ${cardTranslateY}px, 0)`,
               willChange: 'opacity, transform',
             }}
-            className={`w-full max-w-lg lg:max-w-xl text-left bg-pure-white/95 backdrop-blur-md p-6 sm:p-8 lg:p-10 rounded-sm shadow-[0_8px_30px_rgb(24,57,43,0.06)] pointer-events-auto ${
+            className={`w-full max-w-lg lg:max-w-xl text-left bg-pure-white/95 backdrop-blur-md ${isBottom ? 'p-5 sm:p-6 lg:p-7' : 'p-6 sm:p-8 lg:p-10'} rounded-sm shadow-[0_8px_30px_rgb(24,57,43,0.06)] pointer-events-auto ${
               isLeft
                 ? isWhite ? 'border-l-4 border-forest-green' : 'border-l-4 border-deep-gold'
                 : 'border-r-4 border-forest-green'

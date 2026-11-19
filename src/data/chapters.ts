@@ -12,6 +12,7 @@ export interface Chapter {
   theme: 'dark' | 'warm' | 'white';
   align: 'left' | 'right' | 'hero' | 'pinnacle';
   cardPosition: 'left' | 'right';
+  verticalPosition?: 'center' | 'bottom' | 'top';
 }
 
 /**
@@ -261,6 +262,7 @@ export const CHAPTERS: Chapter[] = [
     theme: "white",
     align: "left",
     cardPosition: "left",
+    verticalPosition: "bottom",
   },
   {
     id: "chapter-13",
