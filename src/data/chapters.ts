@@ -169,8 +169,8 @@ export const CHAPTERS: Chapter[] = [
     mobileDescription: "Rolling twists softened leaves, breaking cell walls to release essential botanical oils.",
     meta: ["Circular Mechanical Rolling", "Cellular Rupture"],
     theme: "warm",
-    align: "left",
-    cardPosition: "left",
+    align: "right",
+    cardPosition: "right",
   },
   {
     id: "chapter-7",
