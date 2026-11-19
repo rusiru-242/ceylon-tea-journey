@@ -15,7 +15,7 @@ export class CanvasRenderer {
   private nx = 0;
   private ny = 0;
   private scale = 1;
-  private isMobilePortrait = false;
+  private isPortraitMode = false;
 
   constructor(canvas: HTMLCanvasElement) {
     this.canvas = canvas;
@@ -39,7 +39,8 @@ export class CanvasRenderer {
     const rawH = height > 0 ? height : (this.canvas.clientHeight || (typeof window !== 'undefined' ? window.innerHeight : 720));
     
     const isMobile = rawW < 768;
-    this.isMobilePortrait = isMobile && rawH > rawW;
+    // Portrait / Tablet aspect ratio mode (mobile portrait, iPad portrait 768x1024, iPad landscape 1024x768 4:3)
+    this.isPortraitMode = (rawH > rawW) || (rawW <= 1024 && (rawW / rawH) < 1.45);
     const maxDpr = isMobile ? 1.5 : 2.0;
     const cappedDpr = Math.min(maxDpr, Math.max(1, dpr));
     
@@ -105,9 +106,9 @@ export class CanvasRenderer {
     let dw = this.nw;
     let dh = this.nh;
 
-    // Mobile Portrait ONLY: In the final scene (Chapter 13 tea cup presentation),
+    // Mobile & Tablet Portrait/4:3: In the final scene (Chapter 13 tea cup presentation),
     // center the finished porcelain tea cup and saucer so it's fully, beautifully visible.
-    if (this.isMobilePortrait && frameIndex >= 1460) {
+    if (this.isPortraitMode && frameIndex >= 1460) {
       const t = Math.min(1, Math.max(0, (frameIndex - 1460) / 45));
       const easeT = t * t * (3 - 2 * t);
 
