@@ -155,12 +155,15 @@ export const ChapterOverlay = memo(function ChapterOverlay({
   const isLeft = activeChapter.cardPosition === 'left';
   const isWhite = activeChapter.theme === 'white';
   const isBottom = activeChapter.verticalPosition === 'bottom' || activeChapter.ch === 12;
+  const isHero = activeChapter.ch === 1;
 
   return (
     <div
       className={`absolute inset-0 z-20 w-full h-full pointer-events-none flex flex-col px-4 sm:px-8 md:px-10 lg:px-16 xl:px-20 transition-all duration-300 ${
         isBottom
-          ? 'justify-end pb-16 sm:pb-14 md:pb-12 lg:pb-14'
+          ? isHero
+            ? 'justify-end pb-16 sm:pb-14 md:pb-12 lg:pb-36 xl:pb-40'
+            : 'justify-end pb-16 sm:pb-14 md:pb-12 lg:pb-14'
           : 'justify-end pb-16 sm:pb-14 md:pb-12 lg:justify-center lg:py-16'
       }`}
     >
