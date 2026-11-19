@@ -97,6 +97,7 @@ export const CHAPTERS: Chapter[] = [
     theme: "dark",
     align: "hero",
     cardPosition: "left",
+    verticalPosition: "bottom",
   },
   {
     id: "chapter-2",

@@ -181,7 +181,9 @@ export const ChapterOverlay = memo(function ChapterOverlay({
               willChange: 'opacity, transform',
               transition: isRewinding ? 'opacity 0.2s ease-out' : undefined,
             }}
-            className="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl text-left bg-pure-white/92 sm:bg-pure-white/95 backdrop-blur-md p-4 sm:p-6 md:p-8 lg:p-12 rounded-sm border-l-4 border-deep-gold shadow-[0_8px_30px_rgb(24,57,43,0.06)] pointer-events-auto"
+            className={`w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl text-left bg-pure-white/92 sm:bg-pure-white/95 backdrop-blur-md ${
+              isBottom ? 'p-4 sm:p-6 md:p-8 lg:p-10' : 'p-4 sm:p-6 md:p-8 lg:p-12'
+            } rounded-sm border-l-4 border-deep-gold shadow-[0_8px_30px_rgb(24,57,43,0.06)] pointer-events-auto`}
           >
             {/* Staggered Eyebrow */}
             <div
