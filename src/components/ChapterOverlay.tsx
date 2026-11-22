@@ -156,18 +156,15 @@ export const ChapterOverlay = memo(function ChapterOverlay({
   const isWhite = activeChapter.theme === 'white';
   const isBottom = activeChapter.verticalPosition === 'bottom' || activeChapter.ch === 12;
   const isHero = activeChapter.ch === 1;
-  const isPinnacle = activeChapter.align === 'pinnacle' || isFinalHold;
 
   return (
     <div
-      className={`absolute inset-0 z-20 w-full h-full pointer-events-none flex flex-col px-4 sm:px-8 md:px-10 lg:px-[48px] xl:px-[48px] transition-all duration-300 ${
-        isHero
-          ? 'justify-end pb-16 sm:pb-14 md:pb-12 lg:pb-[14.4vh] xl:pb-[14.4vh]'
-          : isBottom
-            ? 'justify-end pb-16 sm:pb-14 md:pb-12 lg:pb-12 xl:pb-14'
-            : isPinnacle
-              ? 'justify-end pb-16 sm:pb-14 md:pb-12 lg:pb-[36px] xl:pb-[38px]'
-              : 'justify-end pb-16 sm:pb-14 md:pb-12 lg:pb-12 xl:justify-center xl:py-16'
+      className={`absolute inset-0 z-20 w-full h-full pointer-events-none flex flex-col px-4 sm:px-8 md:px-10 lg:px-12 xl:px-20 transition-all duration-300 ${
+        isBottom
+          ? isHero
+            ? 'justify-end pb-16 sm:pb-14 md:pb-12 lg:pb-[120px] xl:pb-[130px]'
+            : 'justify-end pb-16 sm:pb-14 md:pb-12 lg:pb-12 xl:pb-14'
+          : 'justify-end pb-16 sm:pb-14 md:pb-12 lg:pb-12 xl:justify-center xl:py-16'
       }`}
     >
       <div
@@ -187,48 +184,48 @@ export const ChapterOverlay = memo(function ChapterOverlay({
               willChange: 'opacity, transform',
               transition: isRewinding ? 'opacity 0.2s ease-out' : undefined,
             }}
-            className="w-full max-w-md sm:max-w-lg md:max-w-lg lg:max-w-[645px] xl:max-w-[655px] lg:h-[64.4vh] xl:h-[64.4vh] lg:min-h-[440px] xl:min-h-[460px] flex flex-col justify-between text-left bg-pure-white/95 backdrop-blur-md p-4 sm:p-5 md:p-6 lg:p-10 xl:p-12 rounded-sm border-l-4 border-deep-gold shadow-[0_8px_30px_rgb(24,57,43,0.06)] pointer-events-auto"
+            className={`w-full max-w-md sm:max-w-lg md:max-w-lg lg:max-w-xl xl:max-w-xl text-left bg-pure-white/95 backdrop-blur-md ${
+              isBottom ? 'p-4 sm:p-5 md:p-6 lg:p-7 xl:p-8' : 'p-4 sm:p-5 md:p-6 lg:p-8 xl:p-12'
+            } rounded-sm border-l-4 border-deep-gold shadow-[0_8px_30px_rgb(24,57,43,0.06)] pointer-events-auto`}
           >
-            <div>
-              {/* Staggered Eyebrow */}
-              <div
-                style={{
-                  opacity: labelOpacity,
-                  transform: `translate3d(0, ${labelTranslateY}px, 0)`,
-                }}
-                className="flex items-center gap-2 sm:gap-3 lg:gap-3.5 mb-2 sm:mb-2.5 lg:mb-4 xl:mb-5"
-              >
-                <span className="w-5 sm:w-8 lg:w-10 xl:w-12 h-0.5 bg-deep-gold" />
-                <span className="font-label text-[10px] sm:text-label-xs sm:text-label-sm lg:text-[13px] xl:text-[14px] text-deep-gold uppercase tracking-[0.2em] font-semibold">
-                  THE ART OF CEYLON TEA
-                </span>
-                <span className="font-label text-label-xs lg:text-[12px] xl:text-[13px] text-forest-green uppercase tracking-[0.2em] hidden sm:inline font-semibold">
-                  • CHAPTER 01
-                </span>
-              </div>
-
-              {/* Staggered Heading */}
-              <h1
-                style={{
-                  opacity: headingOpacity,
-                  transform: `translate3d(0, ${headingTranslateY}px, 0)`,
-                }}
-                className="font-display text-2xl sm:text-3xl md:text-3xl lg:text-[50px] xl:text-[56px] lg:leading-[54px] xl:leading-[60px] text-forest-green tracking-tight font-normal mb-2 sm:mb-3 lg:mb-5 xl:mb-6 leading-tight"
-              >
-                {activeChapter.title}
-              </h1>
-
-              {/* Staggered Description */}
-              <p
-                style={{
-                  opacity: descOpacity,
-                  transform: `translate3d(0, ${descTranslateY}px, 0)`,
-                }}
-                className="font-body text-xs sm:text-sm md:text-sm lg:text-[17px] xl:text-[19px] lg:leading-[28px] xl:leading-[32px] text-charcoal/90 max-w-xl mb-3 sm:mb-4 lg:mb-6 leading-relaxed font-light line-clamp-3 xl:line-clamp-none"
-              >
-                {activeChapter.description}
-              </p>
+            {/* Staggered Eyebrow */}
+            <div
+              style={{
+                opacity: labelOpacity,
+                transform: `translate3d(0, ${labelTranslateY}px, 0)`,
+              }}
+              className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-2.5 lg:mb-3"
+            >
+              <span className="w-5 sm:w-8 h-0.5 bg-deep-gold" />
+              <span className="font-label text-[10px] sm:text-label-xs sm:text-label-sm text-deep-gold uppercase tracking-widest font-medium">
+                THE ART OF CEYLON TEA
+              </span>
+              <span className="font-label text-label-xs text-forest-green uppercase tracking-widest hidden sm:inline font-medium">
+                • CHAPTER 01
+              </span>
             </div>
+
+            {/* Staggered Heading */}
+            <h1
+              style={{
+                opacity: headingOpacity,
+                transform: `translate3d(0, ${headingTranslateY}px, 0)`,
+              }}
+              className="font-display text-2xl sm:text-3xl md:text-3xl lg:text-4xl xl:text-[44px] xl:leading-[48px] text-forest-green tracking-tight font-normal mb-2 sm:mb-2.5 md:mb-3 xl:mb-4 leading-tight"
+            >
+              {activeChapter.title}
+            </h1>
+
+            {/* Staggered Description */}
+            <p
+              style={{
+                opacity: descOpacity,
+                transform: `translate3d(0, ${descTranslateY}px, 0)`,
+              }}
+              className="font-body text-xs sm:text-sm md:text-sm xl:text-base text-charcoal max-w-lg mb-3 sm:mb-4 md:mb-4 xl:mb-6 leading-relaxed font-light line-clamp-3 xl:line-clamp-none"
+            >
+              {activeChapter.description}
+            </p>
 
             {/* Staggered Metadata & Scroll Prompt */}
             <div
@@ -236,17 +233,17 @@ export const ChapterOverlay = memo(function ChapterOverlay({
                 opacity: metaOpacity,
                 transform: `translate3d(0, ${metaTranslateY}px, 0)`,
               }}
-              className="flex flex-wrap items-center gap-3 sm:gap-4 lg:gap-6 pt-3 sm:pt-3.5 lg:pt-5 xl:pt-6 border-t border-forest-green/15"
+              className="flex flex-wrap items-center gap-3 sm:gap-4 lg:gap-5 pt-2.5 sm:pt-3 xl:pt-3.5 border-t border-forest-green/10"
             >
               <div className="flex items-center gap-2 sm:gap-3 text-forest-green">
-                <span className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 rounded-full border border-forest-green/40 flex items-center justify-center animate-bounce">
-                  <ArrowDown className="w-3 h-3 sm:w-3.5 sm:h-3.5 lg:w-4 lg:h-4" />
+                <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full border border-forest-green/40 flex items-center justify-center animate-bounce">
+                  <ArrowDown className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                 </span>
-                <span className="font-label text-[10px] sm:text-label-xs sm:text-label-sm lg:text-[12px] xl:text-[13px] uppercase tracking-widest font-medium">
+                <span className="font-label text-[10px] sm:text-label-xs sm:text-label-sm uppercase tracking-widest font-medium">
                   Scroll to unfold film
                 </span>
               </div>
-              <span className="font-label text-[9px] sm:text-label-xs lg:text-[11px] xl:text-[12px] text-muted-slate uppercase tracking-widest hidden sm:inline">
+              <span className="font-label text-[9px] sm:text-label-xs text-muted-slate uppercase tracking-widest hidden sm:inline">
                 Nuwara Eliya Highlands • 1,890m
               </span>
             </div>
@@ -260,7 +257,7 @@ export const ChapterOverlay = memo(function ChapterOverlay({
               willChange: 'opacity, transform',
               transition: isRewinding ? 'opacity 0.2s ease-out' : undefined,
             }}
-            className="w-full max-w-md sm:max-w-lg md:max-w-lg lg:max-w-[590px] xl:max-w-[605px] text-left bg-pure-white/95 backdrop-blur-md p-4 sm:p-5 md:p-6 lg:p-8 xl:p-14 rounded-sm border-l-4 border-forest-green shadow-[0_8px_30px_rgb(24,57,43,0.06)] pointer-events-auto"
+            className="w-full max-w-md sm:max-w-lg md:max-w-lg lg:max-w-xl xl:max-w-xl text-left bg-pure-white/95 backdrop-blur-md p-4 sm:p-5 md:p-6 lg:p-8 xl:p-14 rounded-sm border-l-4 border-forest-green shadow-[0_8px_30px_rgb(24,57,43,0.06)] pointer-events-auto"
           >
             <div
               style={{
