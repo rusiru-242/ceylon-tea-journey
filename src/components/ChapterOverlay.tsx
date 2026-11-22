@@ -156,6 +156,7 @@ export const ChapterOverlay = memo(function ChapterOverlay({
   const isWhite = activeChapter.theme === 'white';
   const isBottom = activeChapter.verticalPosition === 'bottom' || activeChapter.ch === 12;
   const isHero = activeChapter.ch === 1;
+  const isPinnacle = activeChapter.align === 'pinnacle' || isFinalHold;
 
   return (
     <div
@@ -164,7 +165,9 @@ export const ChapterOverlay = memo(function ChapterOverlay({
           ? isHero
             ? 'justify-end pb-16 sm:pb-14 md:pb-12 lg:pb-32 xl:pb-32'
             : 'justify-end pb-16 sm:pb-14 md:pb-12 lg:pb-12 xl:pb-14'
-          : 'justify-end pb-16 sm:pb-14 md:pb-12 lg:pb-12 xl:justify-center xl:py-16'
+          : isPinnacle
+            ? 'justify-end pb-16 sm:pb-14 md:pb-12 lg:pb-[36px] xl:pb-[38px]'
+            : 'justify-end pb-16 sm:pb-14 md:pb-12 lg:pb-12 xl:justify-center xl:py-16'
       }`}
     >
       <div
@@ -257,7 +260,7 @@ export const ChapterOverlay = memo(function ChapterOverlay({
               willChange: 'opacity, transform',
               transition: isRewinding ? 'opacity 0.2s ease-out' : undefined,
             }}
-            className="w-full max-w-md sm:max-w-lg md:max-w-lg lg:max-w-xl xl:max-w-xl text-left bg-pure-white/95 backdrop-blur-md p-4 sm:p-5 md:p-6 lg:p-8 xl:p-14 rounded-sm border-l-4 border-forest-green shadow-[0_8px_30px_rgb(24,57,43,0.06)] pointer-events-auto"
+            className="w-full max-w-md sm:max-w-lg md:max-w-lg lg:max-w-[590px] xl:max-w-[605px] text-left bg-pure-white/95 backdrop-blur-md p-4 sm:p-5 md:p-6 lg:p-8 xl:p-14 rounded-sm border-l-4 border-forest-green shadow-[0_8px_30px_rgb(24,57,43,0.06)] pointer-events-auto"
           >
             <div
               style={{
